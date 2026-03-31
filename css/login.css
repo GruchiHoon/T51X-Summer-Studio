@@ -1,0 +1,243 @@
+/* ── T51X Summer Studio — Login CSS ── */
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&display=swap');
+
+:root {
+  --bg: #07080d;
+  --surface: #0f1018;
+  --border: #1e2030;
+  --accent: #7c6af7;
+  --accent2: #a78bfa;
+  --green: #34d399;
+  --red: #f87171;
+  --text: #e8e8f0;
+  --muted: #5a5a78;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'DM Mono', monospace;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+
+/* 배경 그리드 */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(124,106,247,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(124,106,247,0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* 글로우 오브 */
+.glow-orb {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(120px);
+  pointer-events: none;
+  z-index: 0;
+}
+.glow-orb.top {
+  width: 600px; height: 600px;
+  top: -200px; left: 50%;
+  transform: translateX(-50%);
+  background: radial-gradient(circle, rgba(124,106,247,0.18) 0%, transparent 70%);
+}
+.glow-orb.bottom {
+  width: 400px; height: 400px;
+  bottom: -150px; right: -100px;
+  background: radial-gradient(circle, rgba(52,211,153,0.10) 0%, transparent 70%);
+}
+
+/* 메인 컨테이너 */
+.login-wrap {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 440px;
+  padding: 20px;
+}
+
+/* 브랜드 */
+.brand {
+  text-align: center;
+  margin-bottom: 48px;
+}
+.brand-season {
+  font-size: 10px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.brand-season::before,
+.brand-season::after {
+  content: '';
+  width: 32px; height: 1px;
+  background: var(--border);
+}
+.brand-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 58px;
+  line-height: 1;
+  letter-spacing: -1.5px;
+  background: linear-gradient(135deg, #ffffff 0%, #a78bfa 50%, #7c6af7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 4px;
+}
+.brand-sub {
+  font-family: 'DM Serif Display', serif;
+  font-style: italic;
+  font-size: 18px;
+  color: var(--muted);
+  letter-spacing: 1px;
+}
+
+/* 카드 */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 36px 36px 32px;
+  position: relative;
+  overflow: hidden;
+}
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(124,106,247,0.6), transparent);
+}
+.card-label {
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 24px;
+}
+
+/* 폼 필드 */
+.field { margin-bottom: 18px; }
+.field-label {
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 8px;
+  display: block;
+}
+.field-input {
+  width: 100%;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  font-size: 13px;
+  font-family: 'DM Mono', monospace;
+  padding: 12px 14px;
+  outline: none;
+  transition: border-color .2s, box-shadow .2s;
+  letter-spacing: 0.5px;
+}
+.field-input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(124,106,247,0.12);
+}
+.field-input::placeholder { color: #2e2e48; }
+.field-input[type="password"] { letter-spacing: 3px; }
+.field-input[type="password"]::placeholder { letter-spacing: 0.5px; }
+
+/* 에러 */
+.error-msg {
+  display: none;
+  font-size: 11px;
+  color: var(--red);
+  margin-top: 14px;
+  padding: 10px 14px;
+  background: rgba(248,113,113,0.08);
+  border: 1px solid rgba(248,113,113,0.2);
+  border-radius: 7px;
+  letter-spacing: 0.3px;
+  text-align: center;
+}
+.error-msg.show { display: block; }
+
+/* 로그인 버튼 */
+.login-btn {
+  width: 100%;
+  margin-top: 24px;
+  padding: 14px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 12px;
+  font-family: 'DM Mono', monospace;
+  font-weight: 500;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background .2s, transform .15s, box-shadow .2s;
+  position: relative;
+  overflow: hidden;
+}
+.login-btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, transparent 60%);
+  pointer-events: none;
+}
+.login-btn:hover {
+  background: #6b5be6;
+  box-shadow: 0 8px 32px rgba(124,106,247,0.35);
+  transform: translateY(-1px);
+}
+.login-btn:active { transform: translateY(0); }
+.login-btn.loading { pointer-events: none; opacity: 0.7; }
+
+/* 푸터 */
+.footer-meta {
+  text-align: center;
+  margin-top: 28px;
+  font-size: 10px;
+  color: var(--muted);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+/* 애니메이션 */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.brand      { animation: fadeUp .6s ease both; }
+.card       { animation: fadeUp .6s ease .12s both; }
+.footer-meta{ animation: fadeUp .6s ease .22s both; }
+
+@keyframes shake {
+  0%,100% { transform: translateX(0); }
+  20%     { transform: translateX(-8px); }
+  40%     { transform: translateX(8px); }
+  60%     { transform: translateX(-6px); }
+  80%     { transform: translateX(6px); }
+}
+.card.shake { animation: shake .4s ease; }
