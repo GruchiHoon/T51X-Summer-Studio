@@ -1332,6 +1332,10 @@
       </div><!-- /guide-detail-panel -->
   </div>
 </div>
+  <!-- Firebase SDK (compat 버전 — type=module 없이 사용 가능) -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script>
+  <!-- Firebase 초기화 + _ls 연동 (01-config.js 보다 뒤, 앱 js 보다 앞에 위치) -->
   <script src="js/01-config.js"></script>
   <script src="js/02-ui.js"></script>
   <script src="js/03-undo.js"></script>
@@ -1350,5 +1354,6 @@
   <script src="js/08-dashboard.js"></script>
   <script src="js/09-vault.js"></script>
   <script src="js/10-app.js"></script>
+  <script src="js/firebase.js"></script>
 </body>
 </html>
