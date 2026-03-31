@@ -1,0 +1,157 @@
+/* ── Pages — Dashboard, Prompt, Generator, Slots ── */
+
+/* ── Section list ── */
+.section-list { display: flex; flex-direction: column; gap: 8px; }
+.section-item { background: var(--surface2); border: 1px solid var(--border); border-radius: 7px; padding: 10px 14px; display: flex; align-items: center; gap: 12px; cursor: grab; user-select: none; transition: opacity .15s, box-shadow .15s; }
+.section-item:active { cursor: grabbing; }
+.section-item.dragging { opacity: .4; box-shadow: none; }
+.section-item.drag-over { border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent); }
+.drag-handle { color: var(--muted); font-size: 13px; cursor: grab; flex-shrink: 0; line-height: 1; letter-spacing: -1px; }
+.section-badge { font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 4px; background: #1e1e3a; color: var(--accent2); text-transform: uppercase; white-space: nowrap; }
+.section-name { font-size: 13px; flex: 1; }
+.section-note { font-size: 11px; color: var(--muted); flex: 2; }
+.section-del { width: 22px; height: 22px; border-radius: 4px; background: transparent; border: none; color: var(--muted); cursor: pointer; font-size: 14px; display: flex; align-items: center; justify-content: center; }
+.section-del:hover { background: #3a1a1a; color: var(--red); }
+.add-section-row { display: flex; gap: 8px; margin-top: 10px; }
+.add-section-row select { flex: 1; }
+.add-section-row input { flex: 2; }
+
+/* ── Dashboard ── */
+.stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 24px; }
+.stat-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px 20px; }
+.stat-num { font-size: 28px; font-weight: 800; line-height: 1; margin-bottom: 4px; }
+.stat-label { font-size: 12px; color: var(--muted); }
+.stat-card.done .stat-num { color: var(--green); }
+.stat-card.wip .stat-num { color: var(--amber); }
+.stat-card.hold .stat-num { color: var(--red); }
+.stat-card.total .stat-num { color: var(--accent2); }
+
+/* ── Role-based status breakdown ── */
+.role-rows { display: flex; flex-direction: column; gap: 5px; margin-top: 8px; }
+.role-row { display: flex; align-items: center; gap: 6px; font-size: 11px; }
+.role-label { color: var(--muted); width: 30px; flex-shrink: 0; font-weight: 600; }
+.role-status-group { display: flex; gap: 4px; flex: 1; }
+.role-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+.role-dot.done { background: var(--green); }
+.role-dot.wip  { background: var(--amber); }
+.role-dot.todo { background: var(--border); }
+.role-status-select { background: var(--surface2); border: 1px solid var(--border); border-radius: 4px; color: var(--text); font-size: 10px; padding: 1px 4px; outline: none; cursor: pointer; transition: border .15s; flex: 1; min-width: 0; }
+.role-status-select:focus { border-color: var(--accent); }
+.role-status-select.val-done { border-color: #2a5a46; color: var(--green); background: #0e2a20; }
+.role-status-select.val-wip  { border-color: #5a4a10; color: var(--amber); background: #2a2000; }
+.role-status-select.val-todo { border-color: var(--border); color: var(--muted); }
+
+/* ── Stats grid expanded for role breakdown ── */
+.stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 24px; }
+.stat-card-role { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px 18px; }
+.stat-card-role .stat-num { font-size: 28px; font-weight: 800; line-height: 1; margin-bottom: 2px; }
+.stat-card-role .stat-label { font-size: 12px; color: var(--muted); margin-bottom: 8px; }
+.stat-card-role.done .stat-num { color: var(--green); }
+.stat-card-role.wip  .stat-num { color: var(--amber); }
+.stat-card-role.hold .stat-num { color: var(--red); }
+
+/* ── Table role columns ── */
+.role-cell { display: flex; flex-direction: column; gap: 3px; }
+.role-cell-item { display: flex; align-items: center; gap: 4px; font-size: 10px; }
+.role-cell-item .role-label { font-size: 10px; width: 28px; }
+
+.progress-bar-wrap { background: var(--surface2); border-radius: 6px; height: 8px; overflow: hidden; margin: 6px 0; }
+.progress-bar { height: 100%; border-radius: 6px; transition: width .6s ease; background: linear-gradient(90deg, var(--accent), var(--green)); }
+
+.page-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.page-table th { text-align: left; padding: 8px 12px; font-size: 11px; color: var(--muted); border-bottom: 1px solid var(--border); font-weight: 700; letter-spacing: .5px; text-transform: uppercase; }
+.page-table td { padding: 9px 12px; border-bottom: 1px solid var(--border); vertical-align: middle; }
+.page-table tr:last-child td { border-bottom: none; }
+.page-table tr:hover td { background: var(--surface2); }
+/* 섹션 상세 행 */
+.sec-detail-row { background: #0e0e12 !important; }
+.sec-detail-row td { padding: 0 !important; border-bottom: 1px solid var(--border); }
+.sec-detail-row:hover td { background: #0e0e12 !important; }
+.sec-detail-wrap { padding: 10px 14px 12px; }
+.sec-detail-title { font-size: 10px; font-weight: 700; color: var(--accent2); text-transform: uppercase; letter-spacing: .6px; margin-bottom: 8px; }
+.sec-detail-table { width: 100%; border-collapse: collapse; font-size: 11px; }
+.sec-detail-table th { color: var(--muted); font-size: 10px; font-weight: 600; padding: 3px 8px; text-align: left; border-bottom: 1px solid var(--border); }
+.sec-detail-table td { padding: 5px 8px; border-bottom: 1px solid #1a1a22; vertical-align: middle; }
+.sec-detail-table tr:last-child td { border-bottom: none; }
+.sec-name-text { transition: background .12s, border-color .12s; }
+td:hover > .sec-name-text { background: var(--surface2); border-color: var(--border) !important; }
+.sec-num-btn { background: transparent; border: none; color: var(--accent2); font-size: 11px; font-weight: 600; cursor: pointer; padding: 2px 6px; border-radius: 4px; text-decoration: underline; text-underline-offset: 2px; white-space: nowrap; }
+.sec-num-btn:hover { background: #1e1e3a; }
+.sec-role-select { background: var(--surface2); border: 1px solid var(--border); border-radius: 4px; color: var(--text); font-size: 10px; padding: 2px 4px; outline: none; cursor: pointer; }
+.sec-role-select.val-done { border-color: #2a5a46; color: var(--green); background: #0e2a20; }
+.sec-role-select.val-wip  { border-color: #5a4a10; color: var(--amber); background: #2a2000; }
+.sec-role-select.val-todo { border-color: var(--border); color: var(--muted); }
+.status-badge { display: inline-flex; align-items: center; gap: 4px; padding: 2px 9px; border-radius: 4px; font-size: 11px; font-weight: 700; }
+.status-done { background: #1a3d30; color: var(--green); }
+.status-wip { background: #3d2e0a; color: var(--amber); }
+.status-hold { background: #3d1010; color: var(--red); }
+.status-todo { background: var(--surface2); color: var(--muted); }
+.priority-p1 { color: var(--red); font-weight: 700; }
+.priority-p2 { color: var(--amber); }
+.priority-p3 { color: var(--muted); }
+
+/* ── Tabs ── */
+/* ── Save/Load ── */
+.save-bar { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 12px 16px; margin-bottom: 16px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.save-bar-label { font-size: 12px; color: var(--muted); font-weight: 600; white-space: nowrap; }
+.save-slot { display: flex; align-items: center; gap: 6px; background: var(--surface2); border: 1px solid var(--border); border-radius: 6px; padding: 4px 10px; font-size: 12px; cursor: pointer; color: var(--text); transition: all .15s; }
+.save-slot:hover { border-color: var(--accent); color: var(--accent2); }
+.save-slot.has-data { border-color: #2e4a3a; color: var(--green); }
+.save-slot.has-data:hover { border-color: var(--green); }
+.save-slot-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--border); flex-shrink: 0; }
+.save-slot.has-data .save-slot-dot { background: var(--green); }
+.section-counter { font-size: 11px; color: var(--muted); margin-left: auto; }
+
+/* ── Slot Manager Modal ── */
+.slot-manager-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,.72); z-index:1100; align-items:center; justify-content:center; padding:24px; }
+.slot-manager-overlay.open { display:flex; }
+.slot-manager-modal { background:var(--surface); border:1px solid var(--border); border-radius:14px; width:100%; max-width:700px; max-height:85vh; display:flex; flex-direction:column; overflow:hidden; }
+.slot-manager-header { display:flex; align-items:center; justify-content:space-between; padding:14px 20px; border-bottom:1px solid var(--border); flex-shrink:0; }
+.slot-manager-title { font-size:14px; font-weight:700; }
+.slot-manager-close { width:30px; height:30px; border-radius:6px; background:var(--surface2); border:1px solid var(--border); color:var(--muted); font-size:16px; cursor:pointer; display:flex; align-items:center; justify-content:center; }
+.slot-manager-close:hover { color:var(--text); border-color:var(--accent); }
+.slot-manager-body { overflow-y:auto; flex:1; padding:16px; display:flex; gap:12px; }
+
+/* 좌측 폴더 패널 */
+.folder-panel { width:180px; flex-shrink:0; display:flex; flex-direction:column; gap:4px; }
+.folder-panel-title { font-size:10px; font-weight:700; color:var(--muted); text-transform:uppercase; letter-spacing:.8px; padding:0 8px; margin-bottom:6px; }
+.folder-item { display:flex; align-items:center; gap:8px; padding:8px 10px; border-radius:7px; cursor:pointer; border:1px solid transparent; transition:all .12s; position:relative; }
+.folder-item:hover { background:var(--surface2); }
+.folder-item.active { background:var(--surface2); border-color:var(--accent); }
+.folder-icon { font-size:14px; flex-shrink:0; }
+.folder-label { font-size:12px; font-weight:600; color:var(--text); flex:1; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.folder-count { font-size:10px; background:#1e1e3a; color:var(--accent2); border-radius:10px; padding:1px 6px; flex-shrink:0; }
+.folder-count.filled { background:#1a3d30; color:var(--green); }
+.folder-add-btn { display:flex; align-items:center; gap:8px; padding:7px 10px; border-radius:7px; cursor:pointer; border:1px dashed var(--border); color:var(--muted); font-size:12px; transition:all .12s; margin-top:4px; }
+.folder-add-btn:hover { border-color:var(--accent); color:var(--accent2); }
+.folder-rename-input { font-size:12px; background:var(--surface); border:1px solid var(--accent); border-radius:5px; color:var(--text); padding:2px 6px; width:100%; outline:none; }
+
+/* 우측 슬롯 패널 */
+.slot-panel { flex:1; min-width:0; display:flex; flex-direction:column; gap:10px; }
+.slot-panel-header { display:flex; align-items:center; gap:8px; padding-bottom:10px; border-bottom:1px solid var(--border); flex-shrink:0; }
+.slot-panel-folder-name { font-size:13px; font-weight:700; flex:1; }
+.slot-panel-actions { display:flex; gap:6px; }
+.slot-grid { display:grid; grid-template-columns:repeat(2, 1fr); gap:8px; overflow-y:auto; }
+.slot-card { background:var(--surface2); border:1px solid var(--border); border-radius:8px; padding:11px 13px; cursor:pointer; transition:all .15s; position:relative; }
+.slot-card:hover { border-color:var(--accent2); }
+.slot-card.active { border-color:var(--accent); box-shadow:0 0 0 1px var(--accent); }
+.slot-card.filled { border-color:#2a4a38; }
+.slot-card.filled:hover { border-color:var(--green); }
+.slot-card-num { font-size:10px; color:var(--muted); margin-bottom:4px; font-weight:600; }
+.slot-card-name { font-size:12px; font-weight:700; color:var(--text); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; margin-bottom:2px; }
+.slot-card-meta { font-size:10px; color:var(--muted); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.slot-card-dot { position:absolute; top:10px; right:10px; width:7px; height:7px; border-radius:50%; background:var(--border); }
+.slot-card.filled .slot-card-dot { background:var(--green); }
+.slot-card.active .slot-card-dot { background:var(--accent); }
+.slot-card-empty { color:var(--muted); font-size:11px; }
+.slot-del-btn { position:absolute; bottom:8px; right:8px; width:18px; height:18px; border-radius:4px; background:transparent; border:none; color:transparent; cursor:pointer; font-size:12px; display:flex; align-items:center; justify-content:center; line-height:1; transition:all .1s; }
+.slot-card:hover .slot-del-btn { color:var(--muted); }
+.slot-del-btn:hover { background:#3a1a1a !important; color:var(--red) !important; }
+
+/* save-bar 간소화 */
+.save-bar-compact { background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:10px 16px; margin-bottom:16px; display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+.slot-current-chip { display:flex; align-items:center; gap:6px; background:var(--surface2); border:1px solid var(--accent); border-radius:6px; padding:4px 10px; font-size:12px; color:var(--accent2); font-weight:600; }
+.slot-current-chip.empty { border-color:var(--border); color:var(--muted); font-weight:400; }
+.slot-current-dot { width:6px; height:6px; border-radius:50%; background:var(--accent); flex-shrink:0; }
+.slot-current-chip.empty .slot-current-dot { background:var(--border); }
+

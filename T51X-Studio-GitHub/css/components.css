@@ -1,0 +1,57 @@
+/* ── Components — Card, Form, Button, Toast ── */
+
+/* ── Cards ── */
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px 24px; margin-bottom: 16px; }
+.card-title { font-size: 13px; font-weight: 700; color: var(--accent2); text-transform: uppercase; letter-spacing: .8px; margin-bottom: 12px; }
+
+/* ── Form ── */
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
+.form-row.full { grid-template-columns: 1fr; }
+.form-row.triple { grid-template-columns: 1fr 1fr 1fr; }
+label { font-size: 12px; color: var(--muted); display: block; margin-bottom: 5px; font-weight: 600; letter-spacing: .3px; }
+input, select, textarea { width: 100%; background: var(--surface2); border: 1px solid var(--border); border-radius: 6px; color: var(--text); font-size: 13px; padding: 8px 12px; outline: none; transition: border .15s; font-family: inherit; }
+input:focus, select:focus, textarea:focus { border-color: var(--accent); }
+select option { background: var(--surface2); }
+textarea { resize: vertical; min-height: 80px; }
+
+/* ── Buttons ── */
+.btn { padding: 9px 20px; border-radius: 7px; font-size: 13px; font-weight: 600; cursor: pointer; border: none; transition: all .15s; display: inline-flex; align-items: center; gap: 6px; }
+.btn-primary { background: var(--accent); color: #fff; }
+.btn-primary:hover { background: #6b5be6; }
+.btn-ghost { background: var(--surface2); color: var(--text); border: 1px solid var(--border); }
+.btn-ghost:hover { border-color: var(--accent); color: var(--accent2); }
+.btn-green { background: #1a3d30; color: var(--green); border: 1px solid #2a5a46; }
+.btn-green:hover { background: #22503e; }
+.btn-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 16px; }
+
+/* ── Output box ── */
+.output-box { background: #0a0a0d; border: 1px solid var(--border); border-radius: 8px; padding: 16px; font-family: 'Consolas', 'Monaco', monospace; font-size: 12px; line-height: 1.7; color: #c8c8e0; white-space: pre-wrap; word-break: break-all; max-height: 480px; overflow-y: auto; position: relative; }
+.output-box:empty::before { content: '여기에 생성된 프롬프트가 표시됩니다...'; color: #44445a; }
+.copy-btn { position: absolute; top: 10px; right: 10px; padding: 4px 10px; font-size: 11px; background: var(--surface2); color: var(--muted); border: 1px solid var(--border); border-radius: 5px; cursor: pointer; }
+.copy-btn:hover { color: var(--text); border-color: var(--accent); }
+.copy-btn.copied { color: var(--green); border-color: var(--green); }
+
+/* ── Section list ── */
+.section-list { display: flex; flex-direction: column; gap: 8px; }
+.sub-tabs { display: flex; gap: 0; border-bottom: 1px solid var(--border); margin-bottom: 20px; }
+.sub-tab { padding: 8px 18px; font-size: 13px; cursor: pointer; border-bottom: 2px solid transparent; color: var(--muted); transition: all .15s; background: none; border-top: none; border-left: none; border-right: none; }
+.sub-tab.active { color: var(--accent2); border-bottom-color: var(--accent); }
+
+/* ── Inline tags ── */
+.tag { display: inline-block; padding: 1px 7px; border-radius: 4px; font-size: 11px; background: var(--surface2); color: var(--muted); border: 1px solid var(--border); }
+
+/* ── Toast ── */
+.toast { position: fixed; bottom: 24px; right: 24px; background: var(--surface); border: 1px solid var(--green); color: var(--green); padding: 10px 18px; border-radius: 8px; font-size: 13px; font-weight: 600; opacity: 0; transform: translateY(10px); transition: all .3s; pointer-events: none; z-index: 999; }
+.toast.show { opacity: 1; transform: translateY(0); }
+
+/* ── Generator tabs ── */
+.gen-tab-content { display: none; }
+.gen-tab-content.active { display: block; }
+
+.section-types-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin: 8px 0 12px; }
+.type-chip { padding: 6px 10px; background: var(--surface2); border: 1px solid var(--border); border-radius: 6px; font-size: 11px; cursor: pointer; text-align: center; transition: all .15s; color: var(--muted); }
+.type-chip:hover { border-color: var(--accent); color: var(--accent2); }
+.type-chip.selected { background: #1e1e3a; border-color: var(--accent); color: var(--accent2); font-weight: 700; }
+
+.hint { font-size: 11px; color: var(--muted); margin-top: 6px; line-height: 1.5; padding: 8px 12px; background: var(--surface2); border-radius: 6px; border-left: 2px solid var(--accent); }
+
