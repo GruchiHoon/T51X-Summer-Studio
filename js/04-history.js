@@ -83,9 +83,12 @@ function vaultReset() {
 
 function newProject() {
   // 현재 작업이 있으면 자동 저장
-  const state = getProjectState();
-  const hasContent = state.project || state.client || promptPages.length > 0 || promptSections.length > 0;
-  if (hasContent) saveCurrentToHistory(false);
+  // currentHistoryId가 있을 때만 저장 (삭제 후 호출 시 null이므로 저장 안 함)
+  if (currentHistoryId) {
+    const state = getProjectState();
+    const hasContent = state.project || state.client || promptPages.length > 0 || promptSections.length > 0;
+    if (hasContent) saveCurrentToHistory(false);
+  }
   // 폼 초기화
   clearPromptForm();
   currentHistoryId = null;

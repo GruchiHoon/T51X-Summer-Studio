@@ -991,22 +991,35 @@ async function deleteFromHistory(id, e) {
   const item = list.find(h => h.id === id);
   if (!item) return;
 
-  // 삭제 확인 창
-  if (!confirm(`"${item.name}" 항목을 삭제할까요?`)) return;
+  if (!confirm('"' + item.name + '" 항목을 삭제할까요?')) return;
 
-  // 2. 브라우저 목록에서 제거
+  // 히스토리에서 제거
   const newList = list.filter(h => h.id !== id);
   saveHistory(newList);
 
-  // 3. 현재 열려있는 프로젝트를 삭제한 경우, 새 프로젝트 상태로 리셋
   if (currentHistoryId === id) {
-    if (typeof newProject === 'function') {
-      newProject();
-    } else {
-      currentHistoryId = null;
-    }
-  }
+    // 현재 열린 프로젝트 삭제 시:
+    // currentHistoryId를 먼저 null로 초기화해서
+    // newProject()가 삭제된 프로젝트를 다시 저장하는 것을 방지
+    currentHistoryId = null;
 
-  renderHistoryList();
-  showToast('🗑️ 프로젝트가 완벽하게 삭제되었습니다.');
+    if (newList.length > 0) {
+      // 다른 프로젝트가 있으면 첫 번째 것을 불러옴
+      const next = newList[0];
+      applyProjectState(next.state);
+      currentHistoryId = next.id;
+      renderHistoryList();
+      showToast('🗑️ 삭제됐습니다. 이전 프로젝트를 불러왔습니다.');
+    } else {
+      // 히스토리가 비어있으면 빈 폼으로 초기화
+      clearPromptForm();
+      vaultReset();
+      renderHistoryList();
+      showToast('🗑️ 삭제됐습니다.');
+    }
+  } else {
+    // 다른 프로젝트 삭제 시 목록만 갱신
+    renderHistoryList();
+    showToast('🗑️ 프로젝트가 삭제됐습니다.');
+  }
 }
