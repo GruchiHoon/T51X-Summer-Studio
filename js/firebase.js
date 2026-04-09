@@ -21,10 +21,10 @@
 
 const FIREBASE_CONFIG = {
   apiKey:            "AIzaSyDIW5Lxbe909fjfcBaSnGH0CVp8rz7G_Wg",
-  authDomain:        "t51x-summer-studio.firebaseapp.com",
-  databaseURL:       "https://t51x-summer-studio-default-rtdb.firebaseio.com",
-  projectId:         "t51x-summer-studio",
-  storageBucket:     "t51x-summer-studio.firebasestorage.app",
+  authDomain:        "t51x-frloy.firebaseapp.com",
+  databaseURL:       "https://t51x-frloy-default-rtdb.firebaseio.com",
+  projectId:         "t51x-frloy",
+  storageBucket:     "t51x-frloy.firebasestorage.app",
   messagingSenderId: "804393311479",
   appId:             "1:804393311479:web:6cceef34c261d7d3a4c7f2"
 };

@@ -78,7 +78,7 @@ const VAULT_BUILTIN_FILES = {
     'issue_log.md': `---\ntags: [dashboard, issues]\nupdated: 2026-03-23\n---\n\n# 🚨 이슈 & 블로커 로그\n\n---\n\n## 진행 중 이슈\n\n| ID | 내용 | 담당 | 우선순위 | 등록일 |\n|----|------|------|--------|--------|\n| ISS-001 | (이슈 내용) | - | P1 | 2026-03-23 |\n\n---\n\n## 해결된 이슈\n\n| ID | 내용 | 해결일 |\n|----|------|--------|\n| - | - | - |\n`,
   },
   'vf_data': {
-    'brand_info.md': `---\ntags: [data, brand]\nupdated: 2026-03-23\n---\n\n# 🗃️ 브랜드 정보 — brand_info\n\n---\n\n## 기본 정보\n\n| 항목 | 내용 |\n|------|------|\n| 회사명 | T51 / 51X Summer Studio |\n| 대표자 | (입력 필요) |\n| 사업자번호 | (입력 필요) |\n| 주소 | (입력 필요) |\n| 대표 이메일 | (입력 필요) |\n| 대표 전화 | (입력 필요) |\n\n---\n\n## SNS 링크\n\n| 채널 | URL |\n|------|-----|\n| Instagram | (입력 필요) |\n| LinkedIn | (입력 필요) |\n| Behance | (입력 필요) |\n| YouTube | (입력 필요) |\n\n---\n\n## 저작권 표기\n\n\`© 2025 T51/51X Summer Studio. All rights reserved.\`\n`,
+    'brand_info.md': `---\ntags: [data, brand]\nupdated: 2026-03-23\n---\n\n# 🗃️ 브랜드 정보 — brand_info\n\n---\n\n## 기본 정보\n\n| 항목 | 내용 |\n|------|------|\n| 회사명 | T51 / 51X FRLOY |\n| 대표자 | (입력 필요) |\n| 사업자번호 | (입력 필요) |\n| 주소 | (입력 필요) |\n| 대표 이메일 | (입력 필요) |\n| 대표 전화 | (입력 필요) |\n\n---\n\n## SNS 링크\n\n| 채널 | URL |\n|------|-----|\n| Instagram | (입력 필요) |\n| LinkedIn | (입력 필요) |\n| Behance | (입력 필요) |\n| YouTube | (입력 필요) |\n\n---\n\n## 저작권 표기\n\n\`© 2025 T51/51X FRLOY. All rights reserved.\`\n`,
   },
   'vf_data_copy': {
     '01_Home_copy.md': `---\ntags: [data, copy, page-01]\npage: 01_Home\nupdated: 2026-03-23\n---\n\n# 01 Home — 텍스트 문구\n\n---\n\n## Hero 섹션\n\n- 대제목: (입력 필요)\n- 서브타이틀: (입력 필요)\n- CTA 버튼: (입력 필요)\n`,
